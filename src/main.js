@@ -11,6 +11,24 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI);
 
+// 全局调用
+import bus from './lib/bus'
+Vue.prototype.$bus = bus
+
+import Reg from '@/lib/reg'
+Vue.prototype.reg = new Reg
+
+//-----自定义 插件 ----------
+import y from '@/lib/y'
+Vue.use(y)
+
+import pdf from '@/components/preview/pdf'
+Vue.use(pdf)
+import office from '@/components/preview/office'
+Vue.use(office)
+import image from '@/components/preview/image'
+Vue.use(image)
+
 
 new Vue({
   router,

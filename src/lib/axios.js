@@ -17,17 +17,22 @@ class httpRequest {
   }
   interceptors (instance) {
     instance.interceptors.request.use(config => {
-      // console.log('config', config)
       return config
     }, err => {
       // console.log('err', err)
       return Promise.reject(err)
     })
     instance.interceptors.response.use(res => {
-      // console.log('res', res)
+
+      if (res && res.data.code === 401) { // 401, token失效   //接口判断token 是否过期 重定向login页面
+        console.log(res)
+        clearLoginInfo()
+        router.push({ name: 'login' })
+        return Promise.reject(res)
+      }
+
       return res
     }, err => {
-      // console.log('err', err)
       return Promise.reject(err)
     })
   }
@@ -35,7 +40,7 @@ class httpRequest {
     const instance = axios.create()
     const config = Object.assign(this.getInsideConfig(), options)
     // this.interceptors(instance, options.url)
-    instance.request(config)
+    return instance(config)
   }
 }
 export default httpRequest

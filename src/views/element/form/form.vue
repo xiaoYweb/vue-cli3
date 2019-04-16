@@ -708,6 +708,10 @@ export default {
       this.delIdList.push(id)
     },
     save (next) { // 编辑修改传id  保存不传
+      console.log('save info', this.info)
+      console.log('save delIdList', this.delIdList)
+
+      return
       let action = next ?  'next' : 'save'
       let delIdList = [...this.delIdList]
       let scientList = this.info.list.map(item => {

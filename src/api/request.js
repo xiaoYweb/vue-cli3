@@ -5,14 +5,16 @@ import http from './index'
  * @param {*} url
  * @param {*} params
  */
-const $get = (url, params) => {
-  const config = {
-    url,
-    method: 'get',
-    params,
-  }
-  return http.request(config)
-    .then((res) => resolve(res), (err) => reject(err))
+export const $get = (url, params) => {
+  return new Promise((resolve, reject) => {
+    const config = {
+      url,
+      method: 'get',
+      params,
+    }
+    http.request(config)
+      .then(({data: res}) => resolve(res), ({data: err} ) =>  reject(err) )
+  })
 }
 /**
  * getDicInfo 处理结构复杂的query传参
@@ -20,13 +22,15 @@ const $get = (url, params) => {
  * @param {*} query
  */
 const $getDicInfo = (url, query) => {
-  const config = {
-    url,
-    method: 'get',
-    params,
-  }
-  return http.request(config)
-    .then((res) => resolve(res), (err) => reject(err))
+  return new Promise((resolve, reject) => {
+    (query !== undefined) && (url = `${ url }?query=${ encodeURI( JSON.stringify( query ) ) }`)//!important
+    const config = {
+      url,
+      method: 'get',
+    }
+    http.request(config)
+      .then(({data: res}) => resolve(res), ({data: err} ) =>  reject(err) )
+  })
 }
 /**
  * post
@@ -40,8 +44,8 @@ const $post = (url, data) => {
       method: 'post',
       data
     }
-    return http.request(config)
-    .then((res) => resolve(res), (err) => reject(err))
+    http.request(config)
+      .then(({data: res}) => resolve(res), ({data: err} ) =>  reject(err) )
   })
 }
 /**
@@ -60,8 +64,8 @@ const $upload = (url, data) => {
     headers: {'Content-Type': 'multipart/form-data;charset=UTF-8'},//传递文件 抬头类型
     data: params,
   }
-  return http.request(config)
-    .then((res) => resolve(res), (err) => reject(err))
+  http.request(config)
+    .then(({data: res}) => resolve(res), ({data: err} ) =>  reject(err) )
 }
 
 
