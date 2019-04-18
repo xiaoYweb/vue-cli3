@@ -23,13 +23,15 @@ module.exports = {
 
   devServer: {
     port: '8383',
-    // proxy: 'http://192.168.20.16/hrss'
-    // proxy: {
-    //   '/hrss':{
-    //     target:'http://hrss.xlylai.com'
-    //     // target:'http://192.168.20.18'
-    //   },
-    // },
+    proxy: {
+      '/proxyApi': {
+        target: 'http://zcps.xlylai.com',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/proxyApi': '/'
+        }
+      }
+    }
     // proxy: 'http://hrss.xlylai.com/hrss'
   }
 }

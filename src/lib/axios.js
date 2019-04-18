@@ -1,7 +1,7 @@
 import axios from 'axios'
 import baseUrl from '@/config'
 
-class httpRequest {
+class HttpRequest {
   constructor (baseURL = baseUrl) {
     this.baseURL = baseURL
   }
@@ -19,18 +19,17 @@ class httpRequest {
     instance.interceptors.request.use(config => {
       return config
     }, err => {
-      // console.log('err', err)
+      console.log('err', err)
       return Promise.reject(err)
     })
     instance.interceptors.response.use(res => {
 
       if (res && res.data.code === 401) { // 401, token失效   //接口判断token 是否过期 重定向login页面
         console.log(res)
-        clearLoginInfo()
+        // clearLoginInfo()
         router.push({ name: 'login' })
         return Promise.reject(res)
       }
-
       return res
     }, err => {
       return Promise.reject(err)
@@ -43,7 +42,7 @@ class httpRequest {
     return instance(config)
   }
 }
-export default httpRequest
+export default HttpRequest
 
 /**
  * const config = {

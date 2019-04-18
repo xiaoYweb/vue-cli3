@@ -67,7 +67,7 @@
             typeName: 'Navigation',
             children: [
               { name: 'NavMenu 导航菜单', navName: '' },
-              { name: 'Tabs 标签页', navName: '' },
+              { name: 'Tabs 标签页', navName: 'tabs' },
               { name: 'Breadcrumb 面包屑', navName: '' },
               { name: 'Dropdown 下拉菜单', navName: '' },
               { name: 'Steps 步骤条', navName: '' },

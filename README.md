@@ -1,5 +1,7 @@
-# test-cli3
-
+### test-cli3
+```
+use vue.js vuex vue-router axios element-ui as project template
+```
 ## Project setup
 ```
 npm install

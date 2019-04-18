@@ -1,3 +1,6 @@
+
+const _import = (name) => () => import( `@/views/element/${name}` )
+
 const elements = [
   {
     path: 'input',
@@ -12,7 +15,12 @@ const elements = [
   {
     path: 'form',
     name: 'form',
-    component: () => import(/* webpackChunkName: "select" */ '@/views/element/form'),
+    component: () => import(/* webpackChunkName: "form" */ '@/views/element/form'),
+  },
+  {
+    path: 'tabs',
+    name: 'tabs',
+    component: _import('tabs'),
   },
 ]
 

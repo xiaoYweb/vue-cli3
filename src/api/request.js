@@ -29,7 +29,7 @@ const $getDicInfo = (url, query) => {
       method: 'get',
     }
     http.request(config)
-      .then(({data: res}) => resolve(res), ({data: err} ) =>  reject(err) )
+      .then(({data: res}) => resolve(res), ({data: err}) =>  reject(err))
   })
 }
 /**

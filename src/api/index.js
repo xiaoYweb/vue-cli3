@@ -1,3 +1,3 @@
-import httpRequest from '@/lib/axios'
-const http = new httpRequest()
+import HttpRequest from '@/lib/axios'
+const http = new HttpRequest()
 export default http
