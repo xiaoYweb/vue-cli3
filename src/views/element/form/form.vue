@@ -347,17 +347,19 @@
 
 <script>
 import yInput from "_el/input";
-import ySelect from "_el/select";
-import mRanking from '@/components/input-items/m-ranking/m-ranking.vue'
-import mDatePicker from '@/components/input-items/m-datePicker/m-datePicker.vue'
+  import ySelect from "_el/select";
+  import mRanking from '@/components/input-items/m-ranking/m-ranking.vue'
+  import mDatePicker from '@/components/input-items/m-datePicker/m-datePicker.vue'
 export default {
   components: { yInput, ySelect, mRanking, mDatePicker},
   data() {
     const pwdValidate = (rule, value, callback) => {
       // console.log('pwdValidate', value)
       if (value === '') return callback(new Error('密码不能为空'))
-      if (this.loginInfo.again !== '') return this.$refs.loginInfo.validateField('again')
-      callback()
+      if (this.loginInfo.again !== '') {
+        this.$refs.loginInfo.validateField('again')
+        callback()
+      }
     }
     const pwd2Validate = (rule, value, callback) => {
       // console.log('pwdValidate', value)

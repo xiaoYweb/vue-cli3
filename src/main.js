@@ -28,7 +28,12 @@ import office from '@/components/preview/office'
 Vue.use(office)
 import image from '@/components/preview/image'
 Vue.use(image)
-
+// ---- icon-font -------
+import '@/assets/font/iconfont.css'
+import yIcon from '_c/iconfont'
+Vue.component('y-icon',yIcon)
+import yInput from '_c/element/input'
+Vue.component('y-input',yInput)
 
 new Vue({
   router,

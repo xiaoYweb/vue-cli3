@@ -2,7 +2,7 @@
   <ul class="show-list">
     <li>
       <el-card shadow="always">
-         <div slot="header" class="clearfix" style="text-align: left;">
+        <div slot="header" class="clearfix" style="text-align: left;">
           <span>title</span>
         </div>
         <div>

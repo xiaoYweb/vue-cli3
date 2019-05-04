@@ -22,6 +22,11 @@ const elements = [
     name: 'tabs',
     component: _import('tabs'),
   },
+  {
+    path: 'table',
+    name: 'table',
+    component: _import('table'),
+  },
 ]
 
 export default elements

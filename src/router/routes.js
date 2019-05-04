@@ -17,6 +17,7 @@ const routes = [
   {
     path: '/element',
     name: 'element',
+    redirect: {name: 'input'},
     component: () => import(/* webpackChunkName: "about" */ '@/views/element/index'),
     children: [
       ...elements

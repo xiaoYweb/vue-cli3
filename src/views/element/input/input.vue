@@ -86,7 +86,7 @@
         value3: '',
         value4: '',
         password: '',
-        number: '',
+        number: '1',
         float: '',
         contentType: {type:'float', n: 2}
       }

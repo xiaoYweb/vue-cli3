@@ -12,7 +12,11 @@
     :readonly="readonly"
     @blur="blurHandle"
     :disabled="disabled"
-  ></el-input>
+  >
+    <!-- <i slot="prefix" class="el-input__icon el-icon-search"></i> -->
+    <y-icon :iconname="leftIcon" slot="prefix" v-if="leftIcon"></y-icon>
+    <y-icon :iconname="rightIcon" slot="suffix" v-if="rightIcon"></y-icon>
+  </el-input>
 </template>
 
 <script>
@@ -20,7 +24,9 @@ export default {
   data() {
     return {
       limit: {
-        numberAllow: val => val.replace(/[^\d]/g, "") //
+        numberAllow: val => val.replace(/[^\d]/g, ""), //
+        enNum: val => val.replace(/[^\w]/g, ''),
+        num1_9: val => val.replace(/^0/g, ''),
       }
     };
   },
@@ -76,7 +82,15 @@ export default {
     disabled: {
       type: Boolean,
       default: false
-    }
+    },
+    leftIcon: {
+      default: '',
+      type: String
+    },
+    rightIcon: {
+      default: '',
+      type: String
+    },
   },
   computed: {
     styles() {
@@ -93,6 +107,11 @@ export default {
           val = this.limit.numberAllow(val);
         } else if (type == "float") {
           val = this.floatHandle({val, n});
+        } else if (type == 'en-num') {
+            val = this.limit.enNum(val)
+        } else if (type == 'num1_9') {
+          val = this.limit.numberAllow(val)
+          val = this.limit.num1_9(val)
         }
       }
       // console.log('emit', val, typeof(val))
@@ -125,8 +144,7 @@ export default {
 };
 </script>
 
-<style scoped>
-.el-input {
-  height: auto;
-}
+<style lang="less" scoped>
+
+
 </style>
